@@ -1,0 +1,284 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F9FBA4C1660C37600514B9B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F9FBA4B1660C37600514B9B /* UIKit.framework */; };
+		3F9FBA4E1660C37600514B9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F9FBA4D1660C37600514B9B /* Foundation.framework */; };
+		3F9FBA501660C37600514B9B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F9FBA4F1660C37600514B9B /* CoreGraphics.framework */; };
+		3F9FBA521660C37600514B9B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F9FBA511660C37600514B9B /* CoreData.framework */; };
+		3F9FBA581660C37700514B9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F9FBA561660C37700514B9B /* InfoPlist.strings */; };
+		3F9FBA5A1660C37700514B9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA591660C37700514B9B /* main.m */; };
+		3F9FBA5E1660C37700514B9B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA5D1660C37700514B9B /* AppDelegate.m */; };
+		3F9FBA611660C37700514B9B /* SecondLab.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA5F1660C37700514B9B /* SecondLab.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3F9FBA471660C37600514B9B /* SecondLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecondLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F9FBA4B1660C37600514B9B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3F9FBA4D1660C37600514B9B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3F9FBA4F1660C37600514B9B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3F9FBA511660C37600514B9B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3F9FBA551660C37700514B9B /* SecondLab-Info.plist */ = {isa = PBXFileReference; path = "SecondLab-Info.plist"; sourceTree = "<group>"; };
+		3F9FBA571660C37700514B9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3F9FBA591660C37700514B9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3F9FBA5B1660C37700514B9B /* SecondLab-Prefix.pch */ = {isa = PBXFileReference; path = "SecondLab-Prefix.pch"; sourceTree = "<group>"; };
+		3F9FBA5C1660C37700514B9B /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		3F9FBA5D1660C37700514B9B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3F9FBA601660C37700514B9B /* SecondLab.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SecondLab.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F9FBA441660C37600514B9B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F9FBA4C1660C37600514B9B /* UIKit.framework in Frameworks */,
+				3F9FBA4E1660C37600514B9B /* Foundation.framework in Frameworks */,
+				3F9FBA501660C37600514B9B /* CoreGraphics.framework in Frameworks */,
+				3F9FBA521660C37600514B9B /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F9FBA3C1660C37500514B9B = {
+			isa = PBXGroup;
+			children = (
+				3F9FBA531660C37600514B9B /* SecondLab */,
+				3F9FBA4A1660C37600514B9B /* Frameworks */,
+				3F9FBA481660C37600514B9B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3F9FBA481660C37600514B9B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F9FBA471660C37600514B9B /* SecondLab.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F9FBA4A1660C37600514B9B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F9FBA4B1660C37600514B9B /* UIKit.framework */,
+				3F9FBA4D1660C37600514B9B /* Foundation.framework */,
+				3F9FBA4F1660C37600514B9B /* CoreGraphics.framework */,
+				3F9FBA511660C37600514B9B /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3F9FBA531660C37600514B9B /* SecondLab */ = {
+			isa = PBXGroup;
+			children = (
+				3F9FBA5C1660C37700514B9B /* AppDelegate.h */,
+				3F9FBA5D1660C37700514B9B /* AppDelegate.m */,
+				3F9FBA5F1660C37700514B9B /* SecondLab.xcdatamodeld */,
+				3F9FBA541660C37700514B9B /* Supporting Files */,
+			);
+			path = SecondLab;
+			sourceTree = "<group>";
+		};
+		3F9FBA541660C37700514B9B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F9FBA551660C37700514B9B /* SecondLab-Info.plist */,
+				3F9FBA561660C37700514B9B /* InfoPlist.strings */,
+				3F9FBA591660C37700514B9B /* main.m */,
+				3F9FBA5B1660C37700514B9B /* SecondLab-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3F9FBA461660C37600514B9B /* SecondLab */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F9FBA641660C37700514B9B /* Build configuration list for PBXNativeTarget "SecondLab" */;
+			buildPhases = (
+				3F9FBA431660C37600514B9B /* Sources */,
+				3F9FBA441660C37600514B9B /* Frameworks */,
+				3F9FBA451660C37600514B9B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SecondLab;
+			productName = SecondLab;
+			productReference = 3F9FBA471660C37600514B9B /* SecondLab.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3F9FBA3E1660C37500514B9B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 3F9FBA411660C37500514B9B /* Build configuration list for PBXProject "SecondLab" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3F9FBA3C1660C37500514B9B;
+			productRefGroup = 3F9FBA481660C37600514B9B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F9FBA461660C37600514B9B /* SecondLab */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3F9FBA451660C37600514B9B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F9FBA581660C37700514B9B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F9FBA431660C37600514B9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F9FBA5A1660C37700514B9B /* main.m in Sources */,
+				3F9FBA5E1660C37700514B9B /* AppDelegate.m in Sources */,
+				3F9FBA611660C37700514B9B /* SecondLab.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3F9FBA561660C37700514B9B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F9FBA571660C37700514B9B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3F9FBA621660C37700514B9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3F9FBA631660C37700514B9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3F9FBA651660C37700514B9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SecondLab/SecondLab-Prefix.pch";
+				INFOPLIST_FILE = "SecondLab/SecondLab-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3F9FBA661660C37700514B9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SecondLab/SecondLab-Prefix.pch";
+				INFOPLIST_FILE = "SecondLab/SecondLab-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F9FBA411660C37500514B9B /* Build configuration list for PBXProject "SecondLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F9FBA621660C37700514B9B /* Debug */,
+				3F9FBA631660C37700514B9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F9FBA641660C37700514B9B /* Build configuration list for PBXNativeTarget "SecondLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F9FBA651660C37700514B9B /* Debug */,
+				3F9FBA661660C37700514B9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3F9FBA5F1660C37700514B9B /* SecondLab.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3F9FBA601660C37700514B9B /* SecondLab.xcdatamodel */,
+			);
+			currentVersion = 3F9FBA601660C37700514B9B /* SecondLab.xcdatamodel */;
+			path = SecondLab.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 3F9FBA3E1660C37500514B9B /* Project object */;
+}
