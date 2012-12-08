@@ -15,6 +15,23 @@
 		3F9FBA5A1660C37700514B9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA591660C37700514B9B /* main.m */; };
 		3F9FBA5E1660C37700514B9B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA5D1660C37700514B9B /* AppDelegate.m */; };
 		3F9FBA611660C37700514B9B /* SecondLab.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA5F1660C37700514B9B /* SecondLab.xcdatamodeld */; };
+		3F9FBA6A1660C4A400514B9B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA681660C4A400514B9B /* MainViewController.m */; };
+		3F9FBA6B1660C4A400514B9B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F9FBA691660C4A400514B9B /* MainViewController.xib */; };
+		3F9FBA6F1660C63000514B9B /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA6D1660C62F00514B9B /* StatisticsViewController.m */; };
+		3F9FBA701660C63000514B9B /* StatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F9FBA6E1660C62F00514B9B /* StatisticsViewController.xib */; };
+		3F9FBA741660C82200514B9B /* SimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA721660C82100514B9B /* SimulationViewController.m */; };
+		3F9FBA751660C82200514B9B /* SimulationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F9FBA731660C82100514B9B /* SimulationViewController.xib */; };
+		3F9FBA781660C85900514B9B /* SimulationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA771660C85900514B9B /* SimulationView.m */; };
+		3F9FBA7B1660C9BE00514B9B /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA7A1660C9BE00514B9B /* Cell.m */; };
+		3F9FBA831660D37300514B9B /* Land.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA821660D37300514B9B /* Land.m */; };
+		3F9FBA861660E17400514B9B /* Hedgehog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA851660E17400514B9B /* Hedgehog.m */; };
+		3F9FBA891660E17400514B9B /* Apple.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA881660E17400514B9B /* Apple.m */; };
+		3F9FBA8F1660E1C700514B9B /* Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FBA8E1660E1C700514B9B /* Tree.m */; };
+		3F9FBB191660EBFD00514B9B /* 1353749451_tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F9FBB171660EBFD00514B9B /* 1353749451_tree.png */; };
+		3F9FBB1A1660EBFD00514B9B /* rsz_1hedgehog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F9FBB181660EBFD00514B9B /* rsz_1hedgehog.jpg */; };
+		3FEF5A99166A0911001AEAB4 /* apple-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FEF5A98166A0911001AEAB4 /* apple-icon.png */; };
+		3FEF5A9B166A09FB001AEAB4 /* hedgehog-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FEF5A9A166A09FB001AEAB4 /* hedgehog-icon.png */; };
+		3FEF5A9D166A0ACB001AEAB4 /* rsz_hedgehog-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FEF5A9C166A0ACB001AEAB4 /* rsz_hedgehog-icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,13 +40,39 @@
 		3F9FBA4D1660C37600514B9B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F9FBA4F1660C37600514B9B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3F9FBA511660C37600514B9B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		3F9FBA551660C37700514B9B /* SecondLab-Info.plist */ = {isa = PBXFileReference; path = "SecondLab-Info.plist"; sourceTree = "<group>"; };
+		3F9FBA551660C37700514B9B /* SecondLab-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SecondLab-Info.plist"; sourceTree = "<group>"; };
 		3F9FBA571660C37700514B9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3F9FBA591660C37700514B9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3F9FBA5B1660C37700514B9B /* SecondLab-Prefix.pch */ = {isa = PBXFileReference; path = "SecondLab-Prefix.pch"; sourceTree = "<group>"; };
-		3F9FBA5C1660C37700514B9B /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		3F9FBA5B1660C37700514B9B /* SecondLab-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SecondLab-Prefix.pch"; sourceTree = "<group>"; };
+		3F9FBA5C1660C37700514B9B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3F9FBA5D1660C37700514B9B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3F9FBA601660C37700514B9B /* SecondLab.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SecondLab.xcdatamodel; sourceTree = "<group>"; };
+		3F9FBA671660C4A400514B9B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		3F9FBA681660C4A400514B9B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		3F9FBA691660C4A400514B9B /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		3F9FBA6C1660C62F00514B9B /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
+		3F9FBA6D1660C62F00514B9B /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
+		3F9FBA6E1660C62F00514B9B /* StatisticsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticsViewController.xib; sourceTree = "<group>"; };
+		3F9FBA711660C82100514B9B /* SimulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationViewController.h; sourceTree = "<group>"; };
+		3F9FBA721660C82100514B9B /* SimulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulationViewController.m; sourceTree = "<group>"; };
+		3F9FBA731660C82100514B9B /* SimulationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimulationViewController.xib; sourceTree = "<group>"; };
+		3F9FBA761660C85900514B9B /* SimulationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationView.h; sourceTree = "<group>"; };
+		3F9FBA771660C85900514B9B /* SimulationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulationView.m; sourceTree = "<group>"; };
+		3F9FBA791660C9BE00514B9B /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
+		3F9FBA7A1660C9BE00514B9B /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
+		3F9FBA811660D37200514B9B /* Land.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Land.h; sourceTree = "<group>"; };
+		3F9FBA821660D37300514B9B /* Land.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Land.m; sourceTree = "<group>"; };
+		3F9FBA841660E17400514B9B /* Hedgehog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hedgehog.h; path = ../Hedgehog.h; sourceTree = "<group>"; };
+		3F9FBA851660E17400514B9B /* Hedgehog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hedgehog.m; path = ../Hedgehog.m; sourceTree = "<group>"; };
+		3F9FBA871660E17400514B9B /* Apple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Apple.h; path = ../Apple.h; sourceTree = "<group>"; };
+		3F9FBA881660E17400514B9B /* Apple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Apple.m; path = ../Apple.m; sourceTree = "<group>"; };
+		3F9FBA8D1660E1C700514B9B /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tree.h; path = ../Tree.h; sourceTree = "<group>"; };
+		3F9FBA8E1660E1C700514B9B /* Tree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tree.m; path = ../Tree.m; sourceTree = "<group>"; };
+		3F9FBB171660EBFD00514B9B /* 1353749451_tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1353749451_tree.png; sourceTree = SOURCE_ROOT; };
+		3F9FBB181660EBFD00514B9B /* rsz_1hedgehog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rsz_1hedgehog.jpg; sourceTree = SOURCE_ROOT; };
+		3FEF5A98166A0911001AEAB4 /* apple-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-icon.png"; sourceTree = "<group>"; };
+		3FEF5A9A166A09FB001AEAB4 /* hedgehog-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hedgehog-icon.png"; sourceTree = "<group>"; };
+		3FEF5A9C166A0ACB001AEAB4 /* rsz_hedgehog-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rsz_hedgehog-icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +121,31 @@
 		3F9FBA531660C37600514B9B /* SecondLab */ = {
 			isa = PBXGroup;
 			children = (
+				3F9FBA8D1660E1C700514B9B /* Tree.h */,
+				3F9FBA8E1660E1C700514B9B /* Tree.m */,
+				3F9FBA871660E17400514B9B /* Apple.h */,
+				3F9FBA5F1660C37700514B9B /* SecondLab.xcdatamodeld */,
+				3F9FBA881660E17400514B9B /* Apple.m */,
+				3F9FBA841660E17400514B9B /* Hedgehog.h */,
+				3F9FBA851660E17400514B9B /* Hedgehog.m */,
 				3F9FBA5C1660C37700514B9B /* AppDelegate.h */,
 				3F9FBA5D1660C37700514B9B /* AppDelegate.m */,
-				3F9FBA5F1660C37700514B9B /* SecondLab.xcdatamodeld */,
 				3F9FBA541660C37700514B9B /* Supporting Files */,
+				3F9FBA671660C4A400514B9B /* MainViewController.h */,
+				3F9FBA681660C4A400514B9B /* MainViewController.m */,
+				3F9FBA691660C4A400514B9B /* MainViewController.xib */,
+				3F9FBA6C1660C62F00514B9B /* StatisticsViewController.h */,
+				3F9FBA6D1660C62F00514B9B /* StatisticsViewController.m */,
+				3F9FBA6E1660C62F00514B9B /* StatisticsViewController.xib */,
+				3F9FBA711660C82100514B9B /* SimulationViewController.h */,
+				3F9FBA721660C82100514B9B /* SimulationViewController.m */,
+				3F9FBA731660C82100514B9B /* SimulationViewController.xib */,
+				3F9FBA761660C85900514B9B /* SimulationView.h */,
+				3F9FBA771660C85900514B9B /* SimulationView.m */,
+				3F9FBA791660C9BE00514B9B /* Cell.h */,
+				3F9FBA7A1660C9BE00514B9B /* Cell.m */,
+				3F9FBA811660D37200514B9B /* Land.h */,
+				3F9FBA821660D37300514B9B /* Land.m */,
 			);
 			path = SecondLab;
 			sourceTree = "<group>";
@@ -89,6 +153,11 @@
 		3F9FBA541660C37700514B9B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3FEF5A9C166A0ACB001AEAB4 /* rsz_hedgehog-icon.png */,
+				3FEF5A9A166A09FB001AEAB4 /* hedgehog-icon.png */,
+				3FEF5A98166A0911001AEAB4 /* apple-icon.png */,
+				3F9FBB171660EBFD00514B9B /* 1353749451_tree.png */,
+				3F9FBB181660EBFD00514B9B /* rsz_1hedgehog.jpg */,
 				3F9FBA551660C37700514B9B /* SecondLab-Info.plist */,
 				3F9FBA561660C37700514B9B /* InfoPlist.strings */,
 				3F9FBA591660C37700514B9B /* main.m */,
@@ -148,6 +217,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F9FBA581660C37700514B9B /* InfoPlist.strings in Resources */,
+				3F9FBA6B1660C4A400514B9B /* MainViewController.xib in Resources */,
+				3F9FBA701660C63000514B9B /* StatisticsViewController.xib in Resources */,
+				3F9FBA751660C82200514B9B /* SimulationViewController.xib in Resources */,
+				3F9FBB191660EBFD00514B9B /* 1353749451_tree.png in Resources */,
+				3F9FBB1A1660EBFD00514B9B /* rsz_1hedgehog.jpg in Resources */,
+				3FEF5A99166A0911001AEAB4 /* apple-icon.png in Resources */,
+				3FEF5A9B166A09FB001AEAB4 /* hedgehog-icon.png in Resources */,
+				3FEF5A9D166A0ACB001AEAB4 /* rsz_hedgehog-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +238,15 @@
 				3F9FBA5A1660C37700514B9B /* main.m in Sources */,
 				3F9FBA5E1660C37700514B9B /* AppDelegate.m in Sources */,
 				3F9FBA611660C37700514B9B /* SecondLab.xcdatamodeld in Sources */,
+				3F9FBA6A1660C4A400514B9B /* MainViewController.m in Sources */,
+				3F9FBA6F1660C63000514B9B /* StatisticsViewController.m in Sources */,
+				3F9FBA741660C82200514B9B /* SimulationViewController.m in Sources */,
+				3F9FBA781660C85900514B9B /* SimulationView.m in Sources */,
+				3F9FBA7B1660C9BE00514B9B /* Cell.m in Sources */,
+				3F9FBA831660D37300514B9B /* Land.m in Sources */,
+				3F9FBA861660E17400514B9B /* Hedgehog.m in Sources */,
+				3F9FBA891660E17400514B9B /* Apple.m in Sources */,
+				3F9FBA8F1660E1C700514B9B /* Tree.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +316,7 @@
 				GCC_PREFIX_HEADER = "SecondLab/SecondLab-Prefix.pch";
 				INFOPLIST_FILE = "SecondLab/SecondLab-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -241,6 +328,7 @@
 				GCC_PREFIX_HEADER = "SecondLab/SecondLab-Prefix.pch";
 				INFOPLIST_FILE = "SecondLab/SecondLab-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -264,6 +352,7 @@
 				3F9FBA661660C37700514B9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
