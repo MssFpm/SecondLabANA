@@ -16,5 +16,8 @@
 @dynamic state;
 @synthesize xCoord;
 @synthesize yCoord;
+@synthesize cell;
+
+
 
 @end

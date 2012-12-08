@@ -17,9 +17,9 @@
 	Apple* apple;
 }
 
-@property (assign) Tree* tree;
-@property (assign) Hedgehog* hedgehog;
-@property (assign) Apple* apple;
+@property (retain) Tree* tree;
+@property (retain) Hedgehog* hedgehog;
+@property (retain) Apple* apple;
 
 
 @end

@@ -36,6 +36,11 @@ const int AUTUMN_END = 270;
     }
 }
 
+//- (void)dealloc {
+//    [simulationView release];
+//    [super dealloc];
+//}
+
 @synthesize dayOfYear;
 @synthesize simulationView;
 

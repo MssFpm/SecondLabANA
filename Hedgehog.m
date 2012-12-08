@@ -8,6 +8,7 @@
 
 #import "Hedgehog.h"
 #import "Apple.h"
+#import "Cell.h"
 
 
 @implementation Hedgehog
@@ -47,25 +48,43 @@
 
 - (void) startMooving {
     mooving = YES;
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+   // dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     id apple = [potentialApples objectAtIndex:0];
 
     
+    
+    
+   
+//    dispatch_apply(((int)fabs([self amountOfStepsToAppleX:apple])), queue, ^(size_t i) {
+//        NSLog(@"in block, i = %d", i);
+//        self.curLocationX += xSign ? 1 : -1;
+//    });
+//    
+//    dispatch_apply((int)fabs([self amountOfStepsToAppleY:apple]), queue, ^(size_t i) {
+//        self.curLocationY += ySign ? 1 : -1;
+//    });
 
-    BOOL xSign = [self amountOfStepsToAppleX:apple] > 0;
+    int amountOfXSteps = [self amountOfStepsToAppleX:apple];
+    int amountOfYSteps = [self amountOfStepsToAppleY:apple];
     
-    NSLog(@"amount = %d", fabs([self amountOfStepsToAppleX:apple]));
-    
-    dispatch_apply(((int)fabs([self amountOfStepsToAppleX:apple])), queue, ^(size_t i) {
-        NSLog(@"in block, i = %d", i);
-        self.curLocationX += xSign ? 1 : -1;
+    BOOL xSign = amountOfXSteps > 0;
+    BOOL ySign = amountOfYSteps > 0;  
+    double delayInSeconds = .5;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (int i = 0; i < fabs(amountOfXSteps); i++) {
+            self.curLocationX += xSign ? -1 : +1;
+            [NSThread sleepForTimeInterval:delayInSeconds];
+        }
     });
-    
-    NSLog(@"after block");
-    BOOL ySign = [self amountOfStepsToAppleY:apple] > 0;  
-    dispatch_apply((int)fabs([self amountOfStepsToAppleY:apple]), queue, ^(size_t i) {
-        self.curLocationY += ySign ? 1 : -1;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (int i = 0; i < fabs(amountOfYSteps); i++) {
+            self.curLocationY += ySign ? -1 : +1;
+            [NSThread sleepForTimeInterval:delayInSeconds];
+        }
     });
+    Cell* cell = [apple cell];
+    [cell setApple:NULL];
+    
 }
 
 - (int) amountOfStepsToAppleX:(id)apple {
@@ -77,6 +96,11 @@
     return self.curLocationY - [apple yCoord];
 }
 
+//- (void)dealloc {
+//    [potentialApples release];
+//
+//    [super dealloc];
+//}
 
 @synthesize homeLocationX;
 @synthesize homeLocationY;

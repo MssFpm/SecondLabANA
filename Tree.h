@@ -15,6 +15,8 @@
     int xCoord;
     int yCoord;
     id apple;
+    id cell;
+    
 }
 
 - (id) initWithCoordX:(int)x andCoordY: (int)y;
@@ -30,6 +32,7 @@
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSSet *apples;
 @property (assign) id apple;
+@property (retain) id cell;
 @end
 
 @interface Tree (CoreDataGeneratedAccessors)

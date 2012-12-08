@@ -18,8 +18,8 @@
     self = [super initWithCoder:decoder];
     if (self) {
         maxNumberOfHedgehog = 5;
-        xLines = 8;
-        yLines = 10;
+        xLines = 7;
+        yLines = 7;
         treeImage = [UIImage imageNamed:@"1353749451_tree.png"];
         hedgehogImage = [UIImage imageNamed:@"rsz_hedgehog-icon.png"];
         appleImage = [UIImage imageNamed:@"apple-icon.png"];
@@ -42,7 +42,9 @@
                     Tree *tree = [[Tree alloc] initWithCoordX: i andCoordY: j];
                     [tree subscribeToNotifications];
                     [cell setTree:tree];
+                    [tree setCell:cell];
                     [inner addObject:cell];
+                    [tree release];
                 }
                 if ((x ==  4)&&(maxNumberOfHedgehog-- >= 0)) {
                     id appDelegate = [[UIApplication sharedApplication] delegate];
@@ -52,11 +54,15 @@
                     [hedgehog subscribeToNotifications];
                     [cell setHedgehog:hedgehog];
                     [inner addObject:cell];
+                    [hedgehog release];
                     
                 }
+                [cell release];
+                
                 
             }
             [cells addObject:inner];
+            [inner release];
         }
         
         
@@ -100,7 +106,7 @@
 				NSLog(@"x: %d, y: %d", tree.xCoord, tree.yCoord);
                 CGPoint imagePoint = CGPointMake(xDelta * tree.xCoord, yDelta * tree.yCoord);
                 [treeImage drawAtPoint:imagePoint];
-                id apple = [tree apple];
+                id apple = [cell apple];
                 if (apple != NULL) {
                     CGPoint applePoint = CGPointMake(xDelta * [apple xCoord] + 20, yDelta * [apple yCoord] + 20);
                     [appleImage drawAtPoint:applePoint];
@@ -126,6 +132,7 @@
 	CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
 	CGContextStrokePath(context);
 }
+
 
 @synthesize maxNumberOfHedgehog;
 @synthesize hedgehogs;

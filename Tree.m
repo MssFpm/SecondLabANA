@@ -10,7 +10,7 @@
 #import "Apple.h"
 
 
-@implementation Tree
+@implementation Tree 
 
 - (id) initWithCoordX: (int)x andCoordY: (int)y {
 	self = [super init];
@@ -30,16 +30,22 @@
     
     if (apple == NULL) {      
         id appDelegate = [[UIApplication sharedApplication] delegate];
-        NSManagedObjectContext *context = [appDelegate managedObjectContext];
+        NSManagedObjectContext *context = [appDelegate managedObjectContext];       
         NSEntityDescription *entityDescription =[NSEntityDescription entityForName:@"Apple" inManagedObjectContext:context];
         apple = [[Apple alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:context];
         NSLog(@"x=%d,y=%d",self.xCoord, self.yCoord);
         [apple setXCoord: self.xCoord];
         [apple setYCoord: self.yCoord];
+        [cell setApple:apple];
+        [apple setCell:[self cell]];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"NewAppleNotification" object:apple];
 
     }
 }
+//- (void)dealloc{
+//    [apple release];
+//    [super dealloc];
+//}
 
 @dynamic age;
 @dynamic timeOfRipening;
@@ -50,5 +56,7 @@
 @synthesize xCoord;
 @synthesize yCoord;
 @synthesize apple;
+@synthesize cell;
+
 
 @end

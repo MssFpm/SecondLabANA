@@ -10,8 +10,15 @@
 
 @implementation Cell
 
+//- (void)dealloc {
+//    [tree release];
+//    [apple release];
+//    [hedgehog release];
+//    [super dealloc];
+//}
 @synthesize tree;
 @synthesize apple;
 @synthesize hedgehog;
+
 
 @end

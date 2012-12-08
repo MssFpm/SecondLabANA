@@ -40,6 +40,7 @@
                                                     selector:@selector(tick:) 
                                                     userInfo:nil
                                                      repeats:YES];
+    [land release];
     [self.view setNeedsDisplay];
 }
 
