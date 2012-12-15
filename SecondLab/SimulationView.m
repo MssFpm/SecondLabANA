@@ -52,6 +52,7 @@
                     NSEntityDescription *entityDescription =[NSEntityDescription entityForName:@"Hedgehog" inManagedObjectContext:context];
                     Hedgehog *hedgehog = [[Hedgehog alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:context HomeLocationX:i HomeLocationY:j];
                     [hedgehog subscribeToNotifications];
+                    [hedgehog setHedgehogID:maxNumberOfHedgehog];
                     [cell setHedgehog:hedgehog];
                     [inner addObject:cell];
                     [hedgehog release];

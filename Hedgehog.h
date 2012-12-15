@@ -13,6 +13,7 @@
 @interface Hedgehog : NSManagedObject{
     NSMutableArray * potentialApples;
     BOOL mooving;
+    NSInteger hedgehogID;
 }
 
 -(id) initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context HomeLocationX: (NSInteger) homeLocation_x HomeLocationY: (NSInteger) homeLocation_y;
@@ -27,6 +28,7 @@
 @property (assign) NSInteger curLocationY;
 @property (assign) NSMutableArray *potentialApples;
 @property (assign) BOOL mooving;
+@property (assign) NSInteger hedgehogID;
 
 - (void) subscribeToNotifications;
 - (void) startMooving;

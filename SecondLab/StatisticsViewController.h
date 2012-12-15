@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface StatisticsViewController : UIViewController
+@property (retain, nonatomic) IBOutlet UITableView *statisticsTableView;
+@property (retain, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 
 @end

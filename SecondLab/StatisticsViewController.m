@@ -9,6 +9,8 @@
 #import "StatisticsViewController.h"
 
 @implementation StatisticsViewController
+@synthesize statisticsTableView;
+@synthesize segmentControl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +39,8 @@
 
 - (void)viewDidUnload
 {
+    [self setStatisticsTableView:nil];
+    [self setSegmentControl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -48,4 +52,22 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [[UITableViewCell alloc] init] ;
+    // Configure the cell.
+    cell.textLabel.text = @"CELL";
+    
+    return cell;
+    
+}
+
+- (void)dealloc {
+    [statisticsTableView release];
+    [segmentControl release];
+    [super dealloc];
+}
 @end
