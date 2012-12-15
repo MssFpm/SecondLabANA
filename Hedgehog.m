@@ -42,6 +42,7 @@
     id apple = [notification object];
     [potentialApples addObject:apple];
     if (!mooving) {
+        mooving = YES;
         NSLog(@"start mooving");
         [self startMooving];
     }
@@ -54,28 +55,16 @@
     }
 }
 
-- (void) startMooving {
-    mooving = YES;
-    // dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
-    id apple = [potentialApples objectAtIndex:0];
-    
-    //    dispatch_apply(((int)fabs([self amountOfStepsToAppleX:apple])), queue, ^(size_t i) {
-    //        NSLog(@"in block, i = %d", i);
-    //        self.curLocationX += xSign ? 1 : -1;
-    //    });
-    //    
-    //    dispatch_apply((int)fabs([self amountOfStepsToAppleY:apple]), queue, ^(size_t i) {
-    //        self.curLocationY += ySign ? 1 : -1;
-    //    });
-    
-    int amountOfXSteps = [self amountOfStepsToAppleX:apple];
-    int amountOfYSteps = [self amountOfStepsToAppleY:apple];
-    
-    BOOL xSign = amountOfXSteps > 0;
-    BOOL ySign = amountOfYSteps > 0;  
-    double delayInSeconds = .5;
+- (void) startMooving {   
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        id apple = [potentialApples objectAtIndex:0];
+        
+        int amountOfXSteps = [self amountOfStepsToX:[apple xCoord]];
+        int amountOfYSteps = [self amountOfStepsToY:[apple yCoord]];
+        
+        BOOL xSign = amountOfXSteps > 0;
+        BOOL ySign = amountOfYSteps > 0;  
+        double delayInSeconds = .5;
         
             for (int i = 0; i < fabs(amountOfXSteps); i++) {
                 self.curLocationX += xSign ? -1 : +1;
@@ -88,35 +77,62 @@
         
         @synchronized (apple) {
             if ([potentialApples containsObject:apple]) {
-                //TODO: add apple to hedgehog
+                id appDelegate = [[UIApplication sharedApplication] 
+                                  delegate];
+                NSManagedObjectContext *context = [appDelegate managedObjectContext];              
+                [self addApplesObject:apple];
+                [context save:nil];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"AppleTaken" object:apple];
                 
                 Cell* cell = [apple cell];
                 [cell setApple:NULL];
-//                
-                id appDelegate = [[UIApplication sharedApplication] 
-                                                    delegate];
-                NSManagedObjectContext *context = [appDelegate managedObjectContext];
-                
-                [self addApplesObject:apple];
-                
-                [context save:nil];
+
             }
         }
         mooving = NO;
-        if ([potentialApples count] != 0 /*and no apple*/) {
+        NSLog(@"hid = %d, potentionApples = %d", hedgehogID, [potentialApples count]);
+        
+        if ([potentialApples count] != 0 && ![[self apples] count] == 0) {
+            mooving = YES;
             [self startMooving];
+        }
+
+        if ([[self apples] count] != 0) {
+            mooving = YES;
+            [self moveToHome];
         }
     });
 }
 
-- (int) amountOfStepsToAppleX:(id)apple {
-    NSLog(@"curX: %d, appleX: %d", self.curLocationX, [apple xCoord]);
-    return self.curLocationX - [apple xCoord];
+- (void) moveToHome {
+  
+    int amountOfXSteps = [self amountOfStepsToX:0];
+    int amountOfYSteps = [self amountOfStepsToY:0];
+    
+    BOOL xSign = amountOfXSteps > 0;
+    BOOL ySign = amountOfYSteps > 0;  
+    double delayInSeconds = .5;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        for (int i = 0; i < fabs(amountOfXSteps); i++) {
+            self.curLocationX += xSign ? -1 : +1;
+            [NSThread sleepForTimeInterval:delayInSeconds];
+        }
+        for (int i = 0; i < fabs(amountOfYSteps); i++) {
+            self.curLocationY += ySign ? -1 : +1;
+            [NSThread sleepForTimeInterval:delayInSeconds];
+        }
+    });
+    mooving = NO;
 }
 
-- (int) amountOfStepsToAppleY:(id)apple {
-    return self.curLocationY - [apple yCoord];
+- (int) amountOfStepsToX:(int)x {
+   // NSLog(@"curX: %d, appleX: %d", self.curLocationX, [apple xCoord]);
+    return self.curLocationX - x;
+}
+
+- (int) amountOfStepsToY:(int)y {
+    return self.curLocationY - y;
 }
 
 //- (void)dealloc {

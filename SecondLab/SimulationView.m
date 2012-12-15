@@ -119,7 +119,7 @@
             Hedgehog* hedgehog = cell.hedgehog;
 			if (hedgehog != NULL) {
 				NSLog(@"x: %d, y: %d", hedgehog.curLocationX, hedgehog.curLocationY);
-                CGPoint imagePoint = CGPointMake(xDelta * hedgehog.curLocationX, yDelta * hedgehog.curLocationY);
+                CGPoint imagePoint = CGPointMake(xDelta * hedgehog.curLocationX +20, yDelta * hedgehog.curLocationY + 20);
                 [hedgehogImage drawAtPoint:imagePoint];
             }
 		}

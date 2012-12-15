@@ -32,9 +32,9 @@
 
 - (void) subscribeToNotifications;
 - (void) startMooving;
-- (int) amountOfStepsToAppleX:(id)apple;
-- (int) amountOfStepsToAppleY:(id)apple;
-
+- (int) amountOfStepsToX: (int)x ;
+- (int) amountOfStepsToY:(int)y;
+- (void) moveToHome;
 @end
 
 @interface Hedgehog (CoreDataGeneratedAccessors)
