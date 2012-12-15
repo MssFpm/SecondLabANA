@@ -35,16 +35,22 @@
 
 - (void) subscribeToNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToNewApple:) name:@"NewAppleNotification" object:nil];    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToAppleTaken:) name:@"AppleTaken" object:nil];    
 }
 
 - (void) respondToNewApple: (NSNotification*) notification {
     id apple = [notification object];
-    @synchronized(potentialApples) {
-        [potentialApples addObject:apple];
-    }
+    [potentialApples addObject:apple];
     if (!mooving) {
         NSLog(@"start mooving");
         [self startMooving];
+    }
+}
+
+- (void) respondToAppleTaken: (NSNotification*) notification {
+    id apple = [notification object];
+    @synchronized(apple) {
+        [potentialApples removeObject:apple];
     }
 }
 
@@ -52,10 +58,7 @@
     mooving = YES;
     // dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
-    id apple;
-    @synchronized(potentialApples) {
-        apple = [potentialApples objectAtIndex:0];
-    }
+    id apple = [potentialApples objectAtIndex:0];
     
     //    dispatch_apply(((int)fabs([self amountOfStepsToAppleX:apple])), queue, ^(size_t i) {
     //        NSLog(@"in block, i = %d", i);
@@ -74,30 +77,30 @@
     double delayInSeconds = .5;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             for (int i = 0; i < fabs(amountOfXSteps); i++) {
                 self.curLocationX += xSign ? -1 : +1;
                 [NSThread sleepForTimeInterval:delayInSeconds];
             }
-        });
-        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             for (int i = 0; i < fabs(amountOfYSteps); i++) {
                 self.curLocationY += ySign ? -1 : +1;
                 [NSThread sleepForTimeInterval:delayInSeconds];
             }
-        });
         
-        @synchronized(potentialApples) {
+        @synchronized (apple) {
             if ([potentialApples containsObject:apple]) {
-                [potentialApples removeObject:apple];        
-                NSLog(@"hid = %d", [self hedgehogID]);
+                //TODO: add apple to hedgehog
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"AppleTaken" object:apple];
                 
                 Cell* cell = [apple cell];
                 [cell setApple:NULL];
+                
             }
         }
+        mooving = NO;
+        if ([potentialApples count] != 0 /*and no apple*/) {
+            [self startMooving];
+        }
     });
-    
 }
 
 - (int) amountOfStepsToAppleX:(id)apple {
