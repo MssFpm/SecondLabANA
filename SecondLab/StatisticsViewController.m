@@ -7,10 +7,12 @@
 //
 
 #import "StatisticsViewController.h"
+#import "Hedgehog.h"
 
 @implementation StatisticsViewController
 @synthesize statisticsTableView;
 @synthesize segmentControl;
+@synthesize hedgehogs;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,7 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    // Do any additional setup after loading the view from its nib. 
 }
 
 - (void)viewDidUnload
@@ -53,14 +55,25 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    id appDelegate = [[UIApplication sharedApplication] 
+                      delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSEntityDescription *hedgehog = [NSEntityDescription    
+                                     entityForName:@"Hedgehog" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:hedgehog];
+    NSArray *matching_objects = [context executeFetchRequest:request error:nil];
+    [self setHedgehogs:matching_objects];
+    return [matching_objects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] init] ;
     // Configure the cell.
-    cell.textLabel.text = @"CELL";
-    
+//    cell.textLabel.text = @"CELL";  
+    NSString * str = [[NSString alloc] initWithFormat: @"%d", [[[hedgehogs objectAtIndex: [indexPath row]] age] intValue]];
+    [[cell textLabel] setText: str]; 
+    NSLog(@"%d", [[[hedgehogs objectAtIndex: [indexPath row]] age] intValue]);
     return cell;
     
 }

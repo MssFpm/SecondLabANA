@@ -11,5 +11,5 @@
 @interface StatisticsViewController : UIViewController
 @property (retain, nonatomic) IBOutlet UITableView *statisticsTableView;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segmentControl;
-
+@property (retain, nonatomic) NSArray *hedgehogs;
 @end

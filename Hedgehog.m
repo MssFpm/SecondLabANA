@@ -94,6 +94,14 @@
                 
                 Cell* cell = [apple cell];
                 [cell setApple:NULL];
+//                
+                id appDelegate = [[UIApplication sharedApplication] 
+                                                    delegate];
+                NSManagedObjectContext *context = [appDelegate managedObjectContext];
+                
+                [self addApplesObject:apple];
+                
+                [context save:nil];
             }
         }
     });

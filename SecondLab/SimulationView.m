@@ -46,9 +46,10 @@
                     [inner addObject:cell];
                     [tree release];
                 }
+               
                 if ((x ==  4)&&(maxNumberOfHedgehog-- >= 0)) {
                     id appDelegate = [[UIApplication sharedApplication] delegate];
-                    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+                     NSManagedObjectContext *context = [appDelegate managedObjectContext];
                     NSEntityDescription *entityDescription =[NSEntityDescription entityForName:@"Hedgehog" inManagedObjectContext:context];
                     Hedgehog *hedgehog = [[Hedgehog alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:context HomeLocationX:i HomeLocationY:j];
                     [hedgehog subscribeToNotifications];
@@ -56,8 +57,10 @@
                     [cell setHedgehog:hedgehog];
                     [inner addObject:cell];
                     [hedgehog release];
+                    [context save:nil];
                     
                 }
+                
                 [cell release];
                 
                 
