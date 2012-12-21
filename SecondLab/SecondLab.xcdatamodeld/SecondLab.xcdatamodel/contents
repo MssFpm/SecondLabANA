@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="872" systemVersion="10K549" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Apple" representedClassName="Apple" syncable="YES">
         <attribute name="state" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,7 +9,7 @@
         <attribute name="age" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="speed" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="apples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Apple" syncable="YES"/>
+        <relationship name="apples" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Apple" syncable="YES"/>
     </entity>
     <entity name="Tree" representedClassName="Tree" syncable="YES">
         <attribute name="age" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -20,8 +20,8 @@
         <relationship name="apples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Apple" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Tree" positionX="160" positionY="192" width="128" height="135"/>
-        <element name="Hedgehog" positionX="160" positionY="192" width="128" height="105"/>
         <element name="Apple" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="Hedgehog" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Tree" positionX="160" positionY="192" width="128" height="135"/>
     </elements>
 </model>

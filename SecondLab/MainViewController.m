@@ -69,4 +69,20 @@
     [startSimulationButton release];
     [super dealloc];
 }
+- (IBAction)clearDatabase:(id)sender {
+    id appDelegate =  [[UIApplication sharedApplication] delegate];
+    
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSFetchRequest * allHedgehogs = [[NSFetchRequest alloc] init];
+    [allHedgehogs setEntity:[NSEntityDescription entityForName:@"Hedgehog" inManagedObjectContext:context]];
+    [allHedgehogs setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+    
+    NSArray *hedgehogs = [context executeFetchRequest:allHedgehogs error:nil];
+    for (NSManagedObject * hedgehog in hedgehogs) {
+        [context deleteObject:hedgehog];
+    }
+    [context save:nil];
+
+    
+}
 @end

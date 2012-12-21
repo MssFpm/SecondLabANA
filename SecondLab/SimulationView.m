@@ -29,7 +29,7 @@
         xDelta = width / xLines;
         yDelta = height / yLines;
         cells = [[NSMutableArray alloc] initWithCapacity:xLines];
-        NSLog(@"%d", xLines);	
+        NSArray *hedgehogs = [self getHedgehogsFromDatabase];
         int i;
         for (i = 0; i < xLines; i++) {
             NSMutableArray *inner = [[NSMutableArray alloc] initWithCapacity:yLines];
@@ -38,28 +38,36 @@
                 Cell *cell = [[Cell alloc] init];
                 [inner addObject:cell];
                 int x = arc4random() % xLines;
-                if (x == 3) {
+                NSLog(@"x = %d", x);
+                if (x == 1) {
                     Tree *tree = [[Tree alloc] initWithCoordX: i andCoordY: j];
                     [tree subscribeToNotifications];
                     [cell setTree:tree];
                     [tree setCell:cell];
-                    [inner addObject:cell];
                     [tree release];
                 }
                
-                if ((x ==  4)&&(maxNumberOfHedgehog-- >= 0)) {
+                if ((x ==  2)&&(maxNumberOfHedgehog >= 0)) {
+                    Hedgehog *hedgehog;
                     id appDelegate = [[UIApplication sharedApplication] delegate];
-                     NSManagedObjectContext *context = [appDelegate managedObjectContext];
-                    NSEntityDescription *entityDescription =[NSEntityDescription entityForName:@"Hedgehog" inManagedObjectContext:context];
-                    Hedgehog *hedgehog = [[Hedgehog alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:context HomeLocationX:i HomeLocationY:j];
+                    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+                    if ((hedgehogs.count == 0) || (hedgehogs.count < (5- maxNumberOfHedgehog + 1))) {
+                                               NSEntityDescription *entityDescription =[NSEntityDescription entityForName:@"Hedgehog" inManagedObjectContext:context];
+                        hedgehog = [[Hedgehog alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:context HomeLocationX:i HomeLocationY:j];
+                    } else {
+                        hedgehog = [hedgehogs objectAtIndex:(5 - maxNumberOfHedgehog)];
+                    }
+                    NSLog(@"hedgehog's coords: x=%d y=%d", i,j);
+                    
                     [hedgehog subscribeToNotifications];
                     [hedgehog setHedgehogID:maxNumberOfHedgehog];
                     [cell setHedgehog:hedgehog];
-                    [inner addObject:cell];
                     [hedgehog release];
                     [context save:nil];
+                    maxNumberOfHedgehog--;
                     
                 }
+                
                 
                 [cell release];
                 
@@ -68,15 +76,26 @@
             [cells addObject:inner];
             [inner release];
         }
+        NSLog(@"%d amount of hedhegogs", 5 - maxNumberOfHedgehog);
         
         
     }
-    NSLog(@"into init coder");
     return self;    
 }
 
+- (NSArray *)getHedgehogsFromDatabase {
+    id appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSFetchRequest * allHedgehogs = [[NSFetchRequest alloc] init];
+    [allHedgehogs setEntity:[NSEntityDescription entityForName:@"Hedgehog" inManagedObjectContext:context]];
+    [allHedgehogs setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+    
+    NSArray *hedgehogs = [context executeFetchRequest:allHedgehogs error:nil];
+    
+    return hedgehogs;
+}
+
 - (void) setupDrawConfiguration: (CGContextRef)context {
-    NSLog(@"Setup");
     
     CGContextSetLineWidth(context, 1.0);
     CGContextStrokeRect(context, cgBounds);
@@ -85,13 +104,11 @@
 - (void) drawGrid: (CGContextRef)context {
     int i;
 	for (i = 0; i < xLines; i++) {
-        NSLog(@"DRAW%d", i);
 		CGContextMoveToPoint(context, i * xDelta, height + 100);
 		CGContextAddLineToPoint(context, i * xDelta, 0);
 	}
     
 	for (i = 0; i < yLines; i++) {
-        NSLog(@"DRAW%d", i);
 		CGContextMoveToPoint(context, 0, i * yDelta);
 		CGContextAddLineToPoint(context, width, i * yDelta);
 	}
@@ -107,7 +124,6 @@
 			Cell* cell = [inner objectAtIndex:j];
 			Tree* tree = cell.tree;
 			if (tree != NULL) {
-				NSLog(@"x: %d, y: %d", tree.xCoord, tree.yCoord);
                 CGPoint imagePoint = CGPointMake(xDelta * tree.xCoord, yDelta * tree.yCoord);
                 [treeImage drawAtPoint:imagePoint];
                 id apple = [cell apple];
@@ -118,8 +134,7 @@
             }
             Hedgehog* hedgehog = cell.hedgehog;
 			if (hedgehog != NULL) {
-				NSLog(@"x: %d, y: %d", hedgehog.curLocationX, hedgehog.curLocationY);
-                CGPoint imagePoint = CGPointMake(xDelta * hedgehog.curLocationX, yDelta * hedgehog.curLocationY);
+                CGPoint imagePoint = CGPointMake(xDelta * hedgehog.curLocationX +20, yDelta * hedgehog.curLocationY +20);
                 [hedgehogImage drawAtPoint:imagePoint];
             }
 		}

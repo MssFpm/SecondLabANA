@@ -33,6 +33,7 @@
         NSManagedObjectContext *context = [appDelegate managedObjectContext];       
         NSEntityDescription *entityDescription =[NSEntityDescription entityForName:@"Apple" inManagedObjectContext:context];
         apple = [[Apple alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:context];
+        [apple performSelector:@selector(setType:) withObject:@"FIRST"];
         NSLog(@"x=%d,y=%d",self.xCoord, self.yCoord);
         [apple setXCoord: self.xCoord];
         [apple setYCoord: self.yCoord];

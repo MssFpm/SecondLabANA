@@ -49,15 +49,17 @@
 
 - (void) respondToAppleTaken: (NSNotification*) notification {
     id apple = [notification object];
-    @synchronized(apple) {
-        [potentialApples removeObject:apple];
-    }
+    [potentialApples removeObject:apple];
+    [self goHome];
 }
 
 - (void) startMooving {
     mooving = YES;
     // dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
+    if ([potentialApples count] == 0) {
+        return;
+    }
     id apple = [potentialApples objectAtIndex:0];
     
     //    dispatch_apply(((int)fabs([self amountOfStepsToAppleX:apple])), queue, ^(size_t i) {
@@ -74,7 +76,7 @@
     
     BOOL xSign = amountOfXSteps > 0;
     BOOL ySign = amountOfYSteps > 0;  
-    double delayInSeconds = .5;
+    double delayInSeconds = 2.5;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
             for (int i = 0; i < fabs(amountOfXSteps); i++) {
@@ -88,26 +90,30 @@
         
         @synchronized (apple) {
             if ([potentialApples containsObject:apple]) {
-                //TODO: add apple to hedgehog
+                id appDelegate = [[UIApplication sharedApplication]
+                                  delegate];
+                NSManagedObjectContext *context = [appDelegate managedObjectContext];
+                [self addApplesObject:apple];
+                [context save:nil];
+                tookApple = YES;
+                NSLog(@"%d", [self hedgehogID]);
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"AppleTaken" object:apple];
                 
                 Cell* cell = [apple cell];
                 [cell setApple:NULL];
-//                
-                id appDelegate = [[UIApplication sharedApplication] 
-                                                    delegate];
-                NSManagedObjectContext *context = [appDelegate managedObjectContext];
                 
-                [self addApplesObject:apple];
                 
-                [context save:nil];
             }
         }
         mooving = NO;
-        if ([potentialApples count] != 0 /*and no apple*/) {
+        if ([potentialApples count] != 0 && !tookApple) {
             [self startMooving];
         }
     });
+}
+
+- (void) goHome {
+    
 }
 
 - (int) amountOfStepsToAppleX:(id)apple {
@@ -132,6 +138,7 @@
 @synthesize potentialApples;
 @synthesize mooving;
 @synthesize hedgehogID;
+@synthesize tookApple;
 
 @dynamic age;
 @dynamic speed;

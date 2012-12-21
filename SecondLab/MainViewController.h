@@ -11,5 +11,6 @@
 @interface MainViewController : UIViewController
 @property (retain, nonatomic) IBOutlet UIButton *showStatisticsButton;
 @property (retain, nonatomic) IBOutlet UIButton *startSimulationButton;
+- (IBAction)clearDatabase:(id)sender;
 
 @end

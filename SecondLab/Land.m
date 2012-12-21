@@ -25,8 +25,6 @@ const int AUTUMN_END = 270;
 }
 
 - (void) tick:(NSTimer *) timer {
-    NSLog(@"dayOfYear: %d", dayOfYear);
-    
     dayOfYear++;
     dayOfYear %= TOTAL_DAYS;
     
