@@ -61,22 +61,13 @@
         return;
     }
     id apple = [potentialApples objectAtIndex:0];
-    
-    //    dispatch_apply(((int)fabs([self amountOfStepsToAppleX:apple])), queue, ^(size_t i) {
-    //        NSLog(@"in block, i = %d", i);
-    //        self.curLocationX += xSign ? 1 : -1;
-    //    });
-    //    
-    //    dispatch_apply((int)fabs([self amountOfStepsToAppleY:apple]), queue, ^(size_t i) {
-    //        self.curLocationY += ySign ? 1 : -1;
-    //    });
-    
-    int amountOfXSteps = [self amountOfStepsToAppleX:apple];
-    int amountOfYSteps = [self amountOfStepsToAppleY:apple];
+       
+    int amountOfXSteps = [self amountOfStepsToX:[apple xCoord]];
+    int amountOfYSteps = [self amountOfStepsToY:[apple yCoord]];
     
     BOOL xSign = amountOfXSteps > 0;
     BOOL ySign = amountOfYSteps > 0;  
-    double delayInSeconds = 2.5;
+    double delayInSeconds = .5;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
             for (int i = 0; i < fabs(amountOfXSteps); i++) {
@@ -113,16 +104,44 @@
 }
 
 - (void) goHome {
+    mooving = YES;
+    // dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    int amountOfXSteps = [self amountOfStepsToX:0];
+    int amountOfYSteps = [self amountOfStepsToY:0];
+    
+    BOOL xSign = amountOfXSteps > 0;
+    BOOL ySign = amountOfYSteps > 0;
+    double delayInSeconds = .5;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        for (int i = 0; i < fabs(amountOfXSteps); i++) {
+            self.curLocationX += xSign ? -1 : +1;
+            [NSThread sleepForTimeInterval:delayInSeconds];
+        }
+        for (int i = 0; i < fabs(amountOfYSteps); i++) {
+            self.curLocationY += ySign ? -1 : +1;
+            [NSThread sleepForTimeInterval:delayInSeconds];
+        }
+        
+        tookApple = NO;
+        mooving = NO;
+        if ([potentialApples count] != 0) {
+            [self startMooving];
+        }
+    });
+
     
 }
 
-- (int) amountOfStepsToAppleX:(id)apple {
-    NSLog(@"curX: %d, appleX: %d", self.curLocationX, [apple xCoord]);
-    return self.curLocationX - [apple xCoord];
+
+- (int) amountOfStepsToX:(int)targetX {
+//    NSLog(@"curX: %d, appleX: %d", self.curLocationX, [apple xCoord]);
+    return self.curLocationX - targetX;
 }
 
-- (int) amountOfStepsToAppleY:(id)apple {
-    return self.curLocationY - [apple yCoord];
+- (int) amountOfStepsToY:(int)targetY {
+    return self.curLocationY - targetY;
 }
 
 //- (void)dealloc {

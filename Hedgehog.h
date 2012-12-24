@@ -34,8 +34,8 @@
 
 - (void) subscribeToNotifications;
 - (void) startMooving;
-- (int) amountOfStepsToAppleX:(id)apple;
-- (int) amountOfStepsToAppleY:(id)apple;
+- (int) amountOfStepsToX:(int)targetX;
+- (int) amountOfStepsToY:(int)targetY;
 - (void) goHome;
 
 @end

@@ -81,6 +81,16 @@
     for (NSManagedObject * hedgehog in hedgehogs) {
         [context deleteObject:hedgehog];
     }
+    
+    NSFetchRequest * allApples = [[NSFetchRequest alloc] init];
+    [allApples setEntity:[NSEntityDescription entityForName:@"Apple" inManagedObjectContext:context]];
+    [allApples setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+    
+    NSArray *apples = [context executeFetchRequest:allHedgehogs error:nil];
+    for (NSManagedObject * apple in apples) {
+        [context deleteObject:apple];
+    }
+    
     [context save:nil];
 
     

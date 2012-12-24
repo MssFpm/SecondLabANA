@@ -35,7 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     Land *land = [[Land alloc] initWithDayOfYear: 170 andView: self.view];
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.5 
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                       target:land 
                                                     selector:@selector(tick:) 
                                                     userInfo:nil

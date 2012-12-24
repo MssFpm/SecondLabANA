@@ -23,6 +23,7 @@
         treeImage = [UIImage imageNamed:@"1353749451_tree.png"];
         hedgehogImage = [UIImage imageNamed:@"rsz_hedgehog-icon.png"];
         appleImage = [UIImage imageNamed:@"apple-icon.png"];
+        homeImage = [UIImage imageNamed:@"1356204118_house.png"];
         cgBounds = [self bounds];
         width = cgBounds.size.width;
         height = cgBounds.size.height;
@@ -39,7 +40,7 @@
                 [inner addObject:cell];
                 int x = arc4random() % xLines;
                 NSLog(@"x = %d", x);
-                if (x == 1) {
+                if (x == 3) {
                     Tree *tree = [[Tree alloc] initWithCoordX: i andCoordY: j];
                     [tree subscribeToNotifications];
                     [cell setTree:tree];
@@ -47,7 +48,7 @@
                     [tree release];
                 }
                
-                if ((x ==  2)&&(maxNumberOfHedgehog >= 0)) {
+                if ((x == 4)&&(maxNumberOfHedgehog >= 0)) {
                     Hedgehog *hedgehog;
                     id appDelegate = [[UIApplication sharedApplication] delegate];
                     NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -67,11 +68,7 @@
                     maxNumberOfHedgehog--;
                     
                 }
-                
-                
                 [cell release];
-                
-                
             }
             [cells addObject:inner];
             [inner release];
@@ -123,6 +120,10 @@
 		for (j = 0; j < yLines; j++) {
 			Cell* cell = [inner objectAtIndex:j];
 			Tree* tree = cell.tree;
+            if ((i == 0) && (j == 0)) {
+               CGPoint homePoint = CGPointMake(0, 0);
+                [homeImage drawAtPoint:homePoint];
+            }
 			if (tree != NULL) {
                 CGPoint imagePoint = CGPointMake(xDelta * tree.xCoord, yDelta * tree.yCoord);
                 [treeImage drawAtPoint:imagePoint];
@@ -167,5 +168,6 @@
 @synthesize xLines;
 @synthesize yLines;
 @synthesize width;
+@synthesize homeImage;
 
 @end

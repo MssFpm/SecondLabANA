@@ -43,6 +43,7 @@
 @property (assign) UIImage* treeImage;
 @property (assign) UIImage* hedgehogImage;
 @property (assign) UIImage* appleImage;
+@property (assign) UIImage* homeImage;
 
 
 @end

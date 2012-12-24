@@ -32,6 +32,7 @@
 		3FEF5A99166A0911001AEAB4 /* apple-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FEF5A98166A0911001AEAB4 /* apple-icon.png */; };
 		3FEF5A9B166A09FB001AEAB4 /* hedgehog-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FEF5A9A166A09FB001AEAB4 /* hedgehog-icon.png */; };
 		3FEF5A9D166A0ACB001AEAB4 /* rsz_hedgehog-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FEF5A9C166A0ACB001AEAB4 /* rsz_hedgehog-icon.png */; };
+		94864B7C1685EBB7000BF7E8 /* 1356204118_house.png in Resources */ = {isa = PBXBuildFile; fileRef = 94864B7B1685EBB7000BF7E8 /* 1356204118_house.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		3FEF5A98166A0911001AEAB4 /* apple-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-icon.png"; sourceTree = "<group>"; };
 		3FEF5A9A166A09FB001AEAB4 /* hedgehog-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hedgehog-icon.png"; sourceTree = "<group>"; };
 		3FEF5A9C166A0ACB001AEAB4 /* rsz_hedgehog-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rsz_hedgehog-icon.png"; sourceTree = "<group>"; };
+		94864B7B1685EBB7000BF7E8 /* 1356204118_house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1356204118_house.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 		3F9FBA541660C37700514B9B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				94864B7B1685EBB7000BF7E8 /* 1356204118_house.png */,
 				3FEF5A9C166A0ACB001AEAB4 /* rsz_hedgehog-icon.png */,
 				3FEF5A9A166A09FB001AEAB4 /* hedgehog-icon.png */,
 				3FEF5A98166A0911001AEAB4 /* apple-icon.png */,
@@ -225,6 +228,7 @@
 				3FEF5A99166A0911001AEAB4 /* apple-icon.png in Resources */,
 				3FEF5A9B166A09FB001AEAB4 /* hedgehog-icon.png in Resources */,
 				3FEF5A9D166A0ACB001AEAB4 /* rsz_hedgehog-icon.png in Resources */,
+				94864B7C1685EBB7000BF7E8 /* 1356204118_house.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
