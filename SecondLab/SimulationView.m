@@ -85,13 +85,11 @@
 - (void) drawGrid: (CGContextRef)context {
     int i;
 	for (i = 0; i < xLines; i++) {
-        NSLog(@"DRAW%d", i);
 		CGContextMoveToPoint(context, i * xDelta, height + 100);
 		CGContextAddLineToPoint(context, i * xDelta, 0);
 	}
     
 	for (i = 0; i < yLines; i++) {
-        NSLog(@"DRAW%d", i);
 		CGContextMoveToPoint(context, 0, i * yDelta);
 		CGContextAddLineToPoint(context, width, i * yDelta);
 	}
@@ -107,7 +105,6 @@
 			Cell* cell = [inner objectAtIndex:j];
 			Tree* tree = cell.tree;
 			if (tree != NULL) {
-				NSLog(@"x: %d, y: %d", tree.xCoord, tree.yCoord);
                 CGPoint imagePoint = CGPointMake(xDelta * tree.xCoord, yDelta * tree.yCoord);
                 [treeImage drawAtPoint:imagePoint];
                 id apple = [cell apple];
@@ -118,7 +115,6 @@
             }
             Hedgehog* hedgehog = cell.hedgehog;
 			if (hedgehog != NULL) {
-				NSLog(@"x: %d, y: %d", hedgehog.curLocationX, hedgehog.curLocationY);
                 CGPoint imagePoint = CGPointMake(xDelta * hedgehog.curLocationX, yDelta * hedgehog.curLocationY);
                 [hedgehogImage drawAtPoint:imagePoint];
             }

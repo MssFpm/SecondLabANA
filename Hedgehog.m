@@ -56,21 +56,11 @@
 
 - (void) startMooving {
     mooving = YES;
-    // dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
     id apple = [potentialApples objectAtIndex:0];
     
-    //    dispatch_apply(((int)fabs([self amountOfStepsToAppleX:apple])), queue, ^(size_t i) {
-    //        NSLog(@"in block, i = %d", i);
-    //        self.curLocationX += xSign ? 1 : -1;
-    //    });
-    //    
-    //    dispatch_apply((int)fabs([self amountOfStepsToAppleY:apple]), queue, ^(size_t i) {
-    //        self.curLocationY += ySign ? 1 : -1;
-    //    });
-    
-    int amountOfXSteps = [self amountOfStepsToAppleX:apple];
-    int amountOfYSteps = [self amountOfStepsToAppleY:apple];
+    int amountOfXSteps = [self amountOfStepsToAppleX:[apple xCoord]];
+    int amountOfYSteps = [self amountOfStepsToAppleY:[apple yCoord]];
     
     BOOL xSign = amountOfXSteps > 0;
     BOOL ySign = amountOfYSteps > 0;  
@@ -88,16 +78,12 @@
         
         @synchronized (apple) {
             if ([potentialApples containsObject:apple]) {
-                //TODO: add apple to hedgehog
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"AppleTaken" object:apple];
-                
                 Cell* cell = [apple cell];
                 [cell setApple:NULL];
-//                
-                id appDelegate = [[UIApplication sharedApplication] 
-                                                    delegate];
+                id appDelegate = [[UIApplication sharedApplication]
+                                  delegate];
                 NSManagedObjectContext *context = [appDelegate managedObjectContext];
-                
                 [self addApplesObject:apple];
                 
                 [context save:nil];
@@ -110,13 +96,12 @@
     });
 }
 
-- (int) amountOfStepsToAppleX:(id)apple {
-    NSLog(@"curX: %d, appleX: %d", self.curLocationX, [apple xCoord]);
-    return self.curLocationX - [apple xCoord];
+- (int) amountOfStepsToAppleX:(int)appleX {
+    return self.curLocationX - appleX;
 }
 
-- (int) amountOfStepsToAppleY:(id)apple {
-    return self.curLocationY - [apple yCoord];
+- (int) amountOfStepsToAppleY:(int)appleY{
+    return self.curLocationY - appleY;
 }
 
 //- (void)dealloc {
