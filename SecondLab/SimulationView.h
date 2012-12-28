@@ -16,8 +16,7 @@
     float width;
     float height;
 	NSMutableArray* cells;
-    NSMutableArray *hedgehogs;
-	CGImageRef treeMaskRef;
+  	CGImageRef treeMaskRef;
 	CGRect cgBounds;
     UIImage *treeImage;
     UIImage *hedgehogImage;
@@ -35,8 +34,7 @@
 @property float yDelta;
 @property float width;
 @property float height;
-@property (assign) NSMutableArray* cells;
-@property (assign) NSMutableArray *hedgehogs;
+@property (retain) NSMutableArray* cells;
 @property CGImageRef treeMaskRef;
 @property CGRect cgBounds;
 @property (assign) UIImage* treeImage;

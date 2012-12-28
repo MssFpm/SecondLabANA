@@ -18,6 +18,10 @@
 @synthesize yCoord;
 @synthesize cell;
 
+-(void)dealloc {
+    [super dealloc];
+}
+
 
 
 @end

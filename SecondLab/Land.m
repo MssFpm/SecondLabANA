@@ -32,8 +32,8 @@ const int AUTUMN_END = 270;
     
     if (dayOfYear > AUTUMN_START && dayOfYear < AUTUMN_END) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"TickNotification" object:self];
-        [simulationView setNeedsDisplay];
     }
+    [simulationView setNeedsDisplay];
 }
 
 //- (void)dealloc {

@@ -18,7 +18,7 @@
 
 @property (assign) int xCoord;
 @property (assign) int yCoord;
-@property (retain) id cell;
+@property (assign) id cell;
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSNumber * weight;
 @property (nonatomic, retain) NSNumber * state;

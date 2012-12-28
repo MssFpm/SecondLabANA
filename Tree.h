@@ -20,6 +20,7 @@
 }
 
 - (id) initWithCoordX:(int)x andCoordY: (int)y;
+- (id) initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context coordX: (NSInteger) coordX coordY: (NSInteger) coordY;
 - (void) subscribeToNotifications;
 - (void) respondToTick: (NSNotification*) notification; 
 
@@ -32,7 +33,7 @@
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSSet *apples;
 @property (assign) id apple;
-@property (retain) id cell;
+@property (assign) id cell;
 @end
 
 @interface Tree (CoreDataGeneratedAccessors)

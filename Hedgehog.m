@@ -41,6 +41,7 @@
 - (void) respondToNewApple: (NSNotification*) notification {
     id apple = [notification object];
     [potentialApples addObject:apple];
+    [apple release];
     if (!mooving) {
         NSLog(@"start mooving");
         [self startMooving];
@@ -56,6 +57,9 @@
 
 - (void) startMooving {
     mooving = YES;
+    if (potentialApples == nil) {
+        return;
+    }
     
     id apple = [potentialApples objectAtIndex:0];
     
@@ -70,28 +74,42 @@
             for (int i = 0; i < fabs(amountOfXSteps); i++) {
                 self.curLocationX += xSign ? -1 : +1;
                 [NSThread sleepForTimeInterval:delayInSeconds];
+                NSLog(@"still mooving to apple");
             }
             for (int i = 0; i < fabs(amountOfYSteps); i++) {
                 self.curLocationY += ySign ? -1 : +1;
                 [NSThread sleepForTimeInterval:delayInSeconds];
+                NSLog(@"still mooving to apple");
             }
         
+        NSLog(@"mooving completed");
+        
         @synchronized (apple) {
+            NSLog(@"in synchronized!!!");
+            NSLog(@"--> %@", potentialApples);
             if ([potentialApples containsObject:apple]) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"AppleTaken" object:apple];
+                NSLog(@"before cell getting");
+                NSLog(@"->>>>>>>apple %@", apple);
                 Cell* cell = [apple cell];
-                [cell setApple:NULL];
+                NSLog(@"->>>>>>>>>>>cell %@", cell);
+                [cell setApple:nil];
                 id appDelegate = [[UIApplication sharedApplication]
                                   delegate];
                 NSManagedObjectContext *context = [appDelegate managedObjectContext];
                 [self addApplesObject:apple];
+                tookApple = YES;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"AppleTaken" object:apple];
                 
                 [context save:nil];
             }
         }
+        NSLog(@"after synchronized");
         mooving = NO;
-        if ([potentialApples count] != 0 /*and no apple*/) {
+//        [apple release];
+        if ([potentialApples count] != 0 && !tookApple) {
             [self startMooving];
+        } else {
+            [self goHome];
         }
     });
 }
@@ -104,11 +122,40 @@
     return self.curLocationY - appleY;
 }
 
-//- (void)dealloc {
-//    [potentialApples release];
-//
-//    [super dealloc];
-//}
+- (void) goHome {
+    int amountOfXSteps = [self amountOfStepsToAppleX:0];
+    int amountOfYSteps = [self amountOfStepsToAppleY:0];
+    
+    BOOL xSign = amountOfXSteps > 0;
+    BOOL ySign = amountOfYSteps > 0;
+    double delayInSeconds = .5;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        for (int i = 0; i < fabs(amountOfXSteps); i++) {
+            self.curLocationX += xSign ? -1 : +1;
+            [NSThread sleepForTimeInterval:delayInSeconds];
+            NSLog(@"still mooving home");
+        }
+        for (int i = 0; i < fabs(amountOfYSteps); i++) {
+            self.curLocationY += ySign ? -1 : +1;
+            [NSThread sleepForTimeInterval:delayInSeconds];
+            NSLog(@"still mooving home");
+        }
+        tookApple = NO;
+        if ([potentialApples count] != 0) {
+            [self startMooving];
+        }
+    });
+    
+    
+}
+
+- (void)dealloc {
+    [potentialApples release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [super dealloc];
+}
 
 @synthesize homeLocationX;
 @synthesize homeLocationY;
@@ -117,6 +164,7 @@
 @synthesize potentialApples;
 @synthesize mooving;
 @synthesize hedgehogID;
+@synthesize tookApple;
 
 @dynamic age;
 @dynamic speed;

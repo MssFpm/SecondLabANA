@@ -22,13 +22,24 @@
     
 }
 
+-(id) initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context coordX: (NSInteger) coordX coordY: (NSInteger) coordY{
+    self = [super initWithEntity: entity insertIntoManagedObjectContext:context];
+    if(self){
+        self.xCoord = coordX;
+		self.yCoord = coordY;
+    }
+    
+    return self;
+}
+
+
 - (void) subscribeToNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToTick:) name:@"TickNotification" object:nil];    
 }
 
 - (void) respondToTick: (NSNotification*) notification {
     
-    if (apple == NULL) {      
+    if (apple == NULL) {
         id appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = [appDelegate managedObjectContext];       
         NSEntityDescription *entityDescription =[NSEntityDescription entityForName:@"Apple" inManagedObjectContext:context];
@@ -39,13 +50,15 @@
         [cell setApple:apple];
         [apple setCell:[self cell]];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"NewAppleNotification" object:apple];
-
+        // remove!
+//        [apple release];
+        
     }
 }
-//- (void)dealloc{
-//    [apple release];
-//    [super dealloc];
-//}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
+}
 
 @dynamic age;
 @dynamic timeOfRipening;
