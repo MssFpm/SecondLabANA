@@ -22,7 +22,8 @@
 - (id) initWithCoordX:(int)x andCoordY: (int)y;
 - (id) initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context coordX: (NSInteger) coordX coordY: (NSInteger) coordY;
 - (void) subscribeToNotifications;
-- (void) respondToTick: (NSNotification*) notification; 
+- (void) respondToTick: (NSNotification*) notification;
+- (NSString *) getRandomType;
 
 @property int xCoord;
 @property int yCoord;
