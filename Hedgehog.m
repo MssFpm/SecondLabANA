@@ -42,6 +42,7 @@
     id apple = [notification object];
     [potentialApples addObject:apple];
     [apple release];
+    NSLog(@"----->>>>>%i", [apple retainCount]);
     if (!mooving) {
         NSLog(@"start mooving");
         [self startMooving];
@@ -57,7 +58,7 @@
 
 - (void) startMooving {
     mooving = YES;
-    if (potentialApples == nil) {
+    if (potentialApples.count == 0) {
         return;
     }
     
@@ -151,6 +152,7 @@
 }
 
 - (void)dealloc {
+    NSLog(@"HEDGEHOG RELEASED ___________________");
     [potentialApples release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     

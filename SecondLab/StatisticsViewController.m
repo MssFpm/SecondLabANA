@@ -68,6 +68,7 @@
         [request setEntity:hedgehog];
         matching_objects = [context executeFetchRequest:request error:nil];
         [self setHedgehogs:matching_objects];
+        [request release];
     }
     else {
         //        NSEntityDescription *apple = [NSEntityDescription
@@ -87,6 +88,7 @@
         [expressionDescription setExpressionResultType:NSInteger32AttributeType];
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Apple"];
         [request setPropertiesToFetch:[NSArray arrayWithObjects:appleTypeDescription, expressionDescription, nil]];
+        [expressionDescription release];
         [request setPropertiesToGroupBy:[NSArray arrayWithObjects:appleTypeDescription, nil]];
         [request setResultType:NSDictionaryResultType];
         matching_objects = [context executeFetchRequest:request error:nil];
@@ -111,13 +113,13 @@
         NSString *countInString = [[NSString alloc] initWithFormat:@" with %i apple(s)", applesCount];
         cellImage = [UIImage imageNamed:@"hedgehog-icon.png"];
         [labelText appendString:countInString];
+        [countInString release];
     }
     else {
         id appDelegate = [[UIApplication sharedApplication]
                           delegate];
         NSManagedObjectContext *context = [appDelegate managedObjectContext];
         NSEntityDescription *appleEntityDescription = [NSEntityDescription entityForName:@"Apple" inManagedObjectContext:context];
-        Apple *apple = [self.apples objectAtIndex:[indexPath row]];
         NSAttributeDescription *appleTypeDescription = [appleEntityDescription.attributesByName objectForKey:@"type"];
         NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:@"type"];
         NSExpression *countExpression = [NSExpression expressionForFunction:@"count:" arguments:[NSArray arrayWithObjects:keyPathExpression, nil]];
@@ -129,20 +131,23 @@
         [request setPropertiesToFetch:[NSArray arrayWithObjects:appleTypeDescription, expressionDescription, nil]];
         [request setPropertiesToGroupBy:[NSArray arrayWithObjects:appleTypeDescription, nil]];
         [request setResultType:NSDictionaryResultType];
+        [expressionDescription release];
         NSArray *results = [context executeFetchRequest:request error:nil];
-        NSLog(@"--111 0   %i", results.count);
-        id obj = [[results objectAtIndex: [indexPath row]] allKeys] ;
-        NSLog(@"A  %@", obj);
+//        NSLog(@"--111 0   %i", results.count);
+//        id obj = [[results objectAtIndex: [indexPath row]] allKeys] ;
+//        NSLog(@"A  %@", obj);
         int objectIndex = [indexPath row];
         NSString *type = [[results objectAtIndex:objectIndex] valueForKey:@"type"];
         NSString *count = [[NSString alloc] initWithFormat:@"-- %@", [[results objectAtIndex:objectIndex] valueForKey:@"count"]];
         [labelText appendString:type];
         [labelText appendString:count];
+        [count release];
         cellImage = [UIImage imageNamed:@"apple-icon.png"];
         
     }
     [[cell textLabel] setText: labelText];
     [[cell imageView] setImage:cellImage];
+    [labelText release];
     return cell;
     
 }

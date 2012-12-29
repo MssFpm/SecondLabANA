@@ -29,6 +29,7 @@
         xDelta = width / xLines;
         yDelta = height / yLines;
         cells = [[NSMutableArray alloc] initWithCapacity:xLines];
+        NSArray *savedHedgehogs = [self getHedgehogsFromDatabase];
 //        NSLog(@"%d", xLines);	
         int i;
         for (i = 0; i < xLines; i++) {
@@ -57,15 +58,32 @@
                     
                 }
                
-                if ((x ==  4)&&(maxNumberOfHedgehog-- >= 0)) {
+                if ((x ==  4)&&(maxNumberOfHedgehog >= 0)) {
                    
                     NSEntityDescription *entityDescription =[NSEntityDescription entityForName:@"Hedgehog" inManagedObjectContext:context];
-                    Hedgehog *hedgehog = [[Hedgehog alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:context HomeLocationX:i HomeLocationY:j];
+                    Hedgehog *hedgehog;
+                    BOOL newHedgehog = NO;
+                    if ((savedHedgehogs.count == 0) || (savedHedgehogs.count < maxNumberOfHedgehog)) {
+                        newHedgehog = YES;
+                        NSEntityDescription *entityDescription =[NSEntityDescription entityForName:@"Hedgehog" inManagedObjectContext:context];
+                        hedgehog = [[Hedgehog alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:context HomeLocationX:i HomeLocationY:j];
+                        NSLog(@"---%@", hedgehog);
+                    } else {
+                        hedgehog = [savedHedgehogs objectAtIndex:maxNumberOfHedgehog];
+                        
+                        [hedgehog setCurLocationX:i];
+                        [hedgehog setCurLocationY:j];
+                        hedgehog.potentialApples = [[NSMutableArray alloc] initWithCapacity:0];
+                        NSLog(@"+++%@", hedgehog);
+                    }
                     [hedgehog subscribeToNotifications];
                     [hedgehog setHedgehogID:maxNumberOfHedgehog];
                     [cell setHedgehog:hedgehog];
-                    [hedgehog release];
-                   
+                    if (newHedgehog == YES) {
+                        [hedgehog release];
+                    }
+                    
+                    maxNumberOfHedgehog --;
                     
                 }
                  [context save:nil];
@@ -81,6 +99,19 @@
 //    NSLog(@"into init coder");
     return self;
 }
+
+- (NSArray *)getHedgehogsFromDatabase {
+    id appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSFetchRequest * allHedgehogs = [[NSFetchRequest alloc] init];
+    [allHedgehogs setEntity:[NSEntityDescription entityForName:@"Hedgehog" inManagedObjectContext:context]];
+    [allHedgehogs setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+    
+    NSArray *savedHedgehogs = [context executeFetchRequest:allHedgehogs error:nil];
+    [allHedgehogs release];
+    return savedHedgehogs;
+}
+
 
 - (void) setupDrawConfiguration: (CGContextRef)context {
 //    NSLog(@"Setup");

@@ -47,6 +47,8 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [timer invalidate];
+    [timer release];
+    
 }
 
 - (void)viewDidUnload

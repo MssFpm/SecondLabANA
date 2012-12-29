@@ -40,13 +40,14 @@
 - (NSString *) getRandomType {
     NSArray *types = [[NSArray alloc] initWithObjects:@"First Type", @"Second Type", @"Fourth Type", nil];
     int randomIndex = arc4random() % [types count];
-    
-    return [types objectAtIndex:randomIndex];
+    NSString *currentType = [types objectAtIndex:randomIndex];
+    [types release];
+    return currentType;
 }
 
 - (void) respondToTick: (NSNotification*) notification {
     
-    if (apple == NULL) {
+    if (apple == nil) {
         id appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = [appDelegate managedObjectContext];       
         NSEntityDescription *entityDescription =[NSEntityDescription entityForName:@"Apple" inManagedObjectContext:context];

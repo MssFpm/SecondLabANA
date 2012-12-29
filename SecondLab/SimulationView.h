@@ -26,6 +26,7 @@
 
 - (void)setupDrawConfiguration:(CGContextRef) context;
 - (void) drawGrid:(CGContextRef) context;
+- (NSArray*) getHedgehogsFromDatabase;
 
 @property NSInteger maxNumberOfHedgehog;
 @property int xLines;
@@ -40,6 +41,7 @@
 @property (assign) UIImage* treeImage;
 @property (assign) UIImage* hedgehogImage;
 @property (assign) UIImage* appleImage;
+
 
 
 @end

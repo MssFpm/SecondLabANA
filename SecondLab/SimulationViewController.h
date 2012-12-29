@@ -13,6 +13,6 @@
     NSTimer *timer;
 
 }
-@property (assign) NSTimer *timer;
+@property (retain) NSTimer *timer;
 
 @end
